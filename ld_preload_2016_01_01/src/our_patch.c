@@ -2,6 +2,5 @@
 
 char * strcpy(char * s1, const char * s2)
 {
-	strncpy(s1, s2, strnlen(s1, 512));
-	return s1;
+	return strncpy(s1, s2, strnlen(s2, 512));
 }
