@@ -1,0 +1,9 @@
+[requires]
+gtest/1.7.0@lasote/stable
+googlemock/1.7.0@azriel91/stable-1
+
+[options]
+gtest:shared=True
+
+[generators]
+cmake
