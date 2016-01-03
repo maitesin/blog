@@ -2,5 +2,7 @@
 
 char * strcpy(char * s1, const char * s2)
 {
-	return strncpy(s1, s2, strnlen(s2, 512));
+	strncpy(s1, s2, 511);
+	s1[512] = '\0';
+	return s1;
 }
