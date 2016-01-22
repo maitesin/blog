@@ -9,7 +9,6 @@ class Consumer {
 public:
 	Consumer(Producer * p): producer(p){}
 	int countLevelOfDomain(const std::string & url) const {
-		//Another awesome code goes here
 		std::string domain = producer->getDomainFromUrl(url);
 		return std::count(domain.begin(), domain.end(), '.') + 1;
 	}
