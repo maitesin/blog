@@ -6,16 +6,16 @@
 
 class ProducerMock : public Producer {
 public:
-	MOCK_CONST_METHOD1( getDomainFromUrl, std::string(const std::string & ) );
+	MOCK_CONST_METHOD1( getDomainFromUrl, std::string(const std::string & url) );
 };
 
-TEST(Consumer, EmptyString) {
-	std::string url = "http://www.fantasticdomain.com/site/index.html";
+TEST(Consumer, CalculateDomainLevel) {
+	const std::string url = "http://www.fantasticdomain.com/site/index.html";
 	std::string domain = "fantasticdomain.com";
 	ProducerMock mock;
-	Consumer consumer(mock);
+	Consumer consumer(&mock);
 	EXPECT_CALL(mock, getDomainFromUrl(url))
-		    .WillOnce(::testing::Return(std::string(domain)));
+		    .WillOnce(::testing::Return(domain));
 	int domainLevel = consumer.countLevelOfDomain(url);
 	EXPECT_EQ(domainLevel, 2);
 }

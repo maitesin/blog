@@ -2,17 +2,19 @@
 #define __CONSUMER_H__
 
 #include <string>
+#include <algorithm>
 #include "producer.h"
 
 class Consumer {
 public:
-	Consumer(const Producer &p): producer(p){}
+	Consumer(Producer * p): producer(p){}
 	int countLevelOfDomain(const std::string & url) const {
 		//Another awesome code goes here
-		return int();
+		std::string domain = producer->getDomainFromUrl(url);
+		return std::count(domain.begin(), domain.end(), '.') + 1;
 	}
 private:
-	Producer producer;
+	Producer * producer;
 };
 
 #endif /*__CONSUMER_H__*/

@@ -6,10 +6,7 @@
 class Producer {
 public:
 	virtual ~Producer(){}
-	virtual std::string getDomainFromUrl(const std::string & url) const {
-		//Your awesome code goes here
-		return std::string();
-	}
+	virtual std::string getDomainFromUrl(const std::string & url) const = 0;
 };
 
 #endif /*__PRODUCER_H__*/
