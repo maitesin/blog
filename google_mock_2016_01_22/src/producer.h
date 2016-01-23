@@ -1,5 +1,5 @@
-#ifndef __PRODUCER_H__
-#define __PRODUCER_H__
+#ifndef _PRODUCER_H_
+#define _PRODUCER_H_
 
 #include <string>
 
@@ -9,4 +9,4 @@ public:
 	virtual std::string getDomainFromUrl(const std::string & url) const = 0;
 };
 
-#endif /*__PRODUCER_H__*/
+#endif /*_PRODUCER_H_*/

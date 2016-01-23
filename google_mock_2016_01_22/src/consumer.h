@@ -1,5 +1,5 @@
-#ifndef __CONSUMER_H__
-#define __CONSUMER_H__
+#ifndef _CONSUMER_H_
+#define _CONSUMER_H_
 
 #include <string>
 #include <algorithm>
@@ -16,4 +16,4 @@ private:
 	Producer * producer;
 };
 
-#endif /*__CONSUMER_H__*/
+#endif /*_CONSUMER_H_*/
