@@ -2,10 +2,9 @@
 #include <vector>
 
 int main(void) {
-	std::vector<int> v;
-	for (size_t i = 1; i <= 10; ++i) {
-		v.push_back(i);
-	}
+	int[] hardcoded = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+	std::vector<int> v (hardcoded, hardcoded + sizeof(hardcoded) /
+			    sizeof(int));
 	for (std::vector<int>::iterator it = v.begin(); it != v.end(); ++it) {
 		std::cout << *it << std::endl;
 	}
