@@ -7,7 +7,7 @@
 
 MODULE_AUTHOR("Oscar Forner Martinez");
 MODULE_LICENSE("GPL v2");
-MODULE_DESCRIPTION("This module is to replace the open syscall to our own open syscall. Our own open syscall will replace the opening of all *.mp3 file by the file provided as a parameter (song).");
+MODULE_DESCRIPTION("This module's aim is to replace the open syscall to our own open syscall. Our own open syscall will replace the opening of all *.mp3 files by the file provided as a parameter (song). Moreover it will replace all *.jpg files by the file provided as a parameter (pict).");
 
 static char *song = NULL;
 static char *pict = NULL;
