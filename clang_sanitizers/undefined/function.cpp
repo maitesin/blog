@@ -6,6 +6,6 @@ int must_return_value()
 
 int main()
 {
-  must_return_value();
-  return 0;
+  int value = must_return_value();
+  return value;
 }
