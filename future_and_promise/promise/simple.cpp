@@ -1,20 +1,31 @@
 #include <iostream>
+#include <functional>
+#include <thread>
 #include <future>
 
-int accum_up_to(int value) {
+void accum_up_to(std::future<int>& f) {
+  std::cout << "Started accum_up_to method" << std::endl;
   int accum = 0;
+  int value = f.get();
   for (int i = 0; i <= value; ++i) {
     accum += i;
   }
-  return accum;
+  std::cout << "Calculated a value of: " << accum << std::endl;
 }
 
 
 int main()
 {
-  std::future<int> f = std::async(std::launch::async, accum_up_to, 50);
+  int limit;
+  std::promise<int> p;
+  std::future<int> f = p.get_future();
+  std::thread t(accum_up_to, std::ref(f));
 
-  std::cout << "Calculated a value of: " << f.get() << std::endl;
+  std::cout << "Introduce the limit:" << std::endl;
+  std::cin >> limit;
+
+  p.set_value(limit);
+  t.join();
 
   return 0;
 }
