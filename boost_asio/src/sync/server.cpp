@@ -30,12 +30,13 @@ int main(int argc, const char *argv[])
   }
 
   // Read a message
+  size_t size;
   char buf[512];
   std::ostringstream oss;
   boost::system::error_code error = boost::asio::error::eof;
   do {
-    socket.read_some(boost::asio::buffer(buf), error);
-    oss << buf;
+    size = socket.read_some(boost::asio::buffer(buf), error);
+    oss << std::string(buf).substr(0, size);
   } while(error && error != boost::asio::error::eof);
 
   // Reverse the received message
