@@ -4,7 +4,7 @@
 
 using boost::asio::ip::tcp;
 
-int main(int argc, char *argv[])
+int main(int argc, const char *argv[])
 {
   // Check provided parameters
   if (argc != 4) {
@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
 
   // Send a message to the end point
   std::string message = {argv[3]};
-  boost::asio::write(socket, boost::asio::buffer(message), boost::asio::transfer_all(), not_throw);
+  socket.write_some(boost::asio::buffer(message), not_throw);
   if (not_throw) {
     std::cerr << "Error sending(" << not_throw.value() << "): "<< not_throw.message() << std::endl;
     return 1;
@@ -47,7 +47,7 @@ int main(int argc, char *argv[])
   boost::system::error_code error = boost::asio::error::eof;
   do {
     boost::asio::read(socket, response, error);
-  } while(error != boost::asio::error::eof);
+  } while(error && error != boost::asio::error::eof);
 
   // Close socket
   socket.close();
