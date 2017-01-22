@@ -36,7 +36,7 @@ int main(int argc, const char *argv[])
   boost::system::error_code error = boost::asio::error::eof;
   do {
     size = socket.read_some(boost::asio::buffer(buf), error);
-    oss << std::string(buf).substr(0, size);
+    oss << std::string(buf, size);
   } while(error && error != boost::asio::error::eof);
 
   // Reverse the received message
