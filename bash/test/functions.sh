@@ -1,5 +1,3 @@
-#!/bin/bash
-
 sum() {
   if [ ${#} -ne 2 ]; then
     echo "Bad number of parameters"
