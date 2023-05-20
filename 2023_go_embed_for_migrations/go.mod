@@ -1,4 +1,4 @@
-module github/maitesin/blog/2022_go_embed_for_migrations
+module github/maitesin/blog/2023_go_embed_for_migrations
 
 go 1.18
 

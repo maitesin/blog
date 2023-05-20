@@ -6,7 +6,7 @@ services:
     environment:
       POSTGRES_USER: ${DB_USERNAME:-postgres}
       POSTGRES_PASSWORD: ${DB_PASSWORD:-postgres}
-      POSTGRES_DB: ${DB_NAME:-example}
+      POSTGRES_DB: ${DB_NAME:-examples}
     ports:
       - "${DB_HOST:-127.0.0.1}:${DB_PORT:-54321}:5432"
     command: ["postgres", "-c", "log_statement=all"]

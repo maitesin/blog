@@ -11,26 +11,32 @@ import (
 	_ "github.com/lib/pq"
 )
 
-const dbName = "db_name"
+const dbURL = "postgres://postgres:postgres@localhost:54321/examples?sslmode=disable"
 
 //go:embed migrations/*.sql
 var migrationsFS embed.FS
 
 func main() {
-	dbConn, err := sql.Open("postgres", fmt.Sprintf("postgres://postgres:postgres@localhost:54321/%s", dbName))
+	dbConn, err := sql.Open("postgres", dbURL)
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
 	defer dbConn.Close()
 
-	dbDriver, err := postgres.WithInstance(dbConn, &postgres.Config{})
+	d, err := iofs.New(migrationsFS, "migrations")
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
 
-	err = migrationsToRun.Up()
+	migrations, err := migrate.NewWithSourceInstance("iofs", d, dbURL)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	err = migrations.Up()
 	if err != nil && err.Error() != "no change" {
 		fmt.Println(err)
 		return
