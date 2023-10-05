@@ -2,7 +2,7 @@ Output examples/demo.gif
 
 Require echo
 
-Set Shell bash
+Set Shell fish
 Set FontSize 18
 Set Width 1020
 Set Height 730
